@@ -2,87 +2,860 @@
 <html>
 
 <head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>replit</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
-  <style>
-    @import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>replit</title>
+    <style>
+        @import url(//fonts.googleapis.com/earlyaccess/hanna.css);
 
-    .nav {
-      height: 70px;
-      border-bottom: 1.5px solid #CFCFCF;
-      display: flex;
-      align-items: center;
-    }
+        body {
+            background-image: url('./images/bg.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
 
-    .nav-right-items {
-      display: flex;
-      margin-left: auto;
-      margin-right: 60px;
-    }
+        body::-webkit-scrollbar {
+            display: none;
+            /* 스크롤바 숨김 */
+        }
 
-    .nav-item {
-      margin-left: 10px;
-      font-family: 'Hanna', sans-serif;
-      color: black; text-decoration: none;
-      
-    }
+        .loading {
 
-    .nav-item2 {
-      margin-left: 10px;
-      color: #CFCFCF;
-    }
+            backdrop-filter: blur(20px);
+            position: fixed;
+            display: flex;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            margin: 0px;
+            border: 0px;
+            top: 0%;
+            opacity: 1;
+            font-size: 7em;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: 'Hanna', sans-serif;
 
-    .company-name {
-      font-size: 25px;
-      font-weight: 100;
-      margin-left: 20px;
-      font-family: 'Hanna', sans-serif;
-      color: black; text-decoration: none;
+        }
 
-    }
+        .nav {
+            top: 1%;
+            position: fixed;
+            display: flex;
+            align-items: center;
 
-    .title {
-      text-align: center;
-      font-size: 60px;
-      font-weight: bold;
+            width: 97%;
+            height: 60px;
 
-    }
-    
-    .main {
-      width: 800px;
-      margin: 0 auto;
-      margin-top: 60px;
-    }
+            margin: 1%;
 
-    img {
-      witdh: 45px;
-      height: 45px;
-    }
-  </style>
+            border-radius: 20px;
+            background-color: #ffffff58;
+            backdrop-filter: blur(10px);
+            box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+
+        .nav-right-items {
+            display: flex;
+            margin-left: auto;
+            margin-right: 60px;
+        }
+
+        .nav-item {
+            margin-left: 10px;
+            font-family: 'Hanna', sans-serif;
+            color: black;
+            text-decoration: none;
+        }
+
+        .nav-item2 {
+            margin-left: 10px;
+            color: #CFCFCF;
+        }
+
+        .company-name {
+            font-size: 25px;
+            font-weight: 100;
+            margin-left: 20px;
+            font-family: 'Hanna', sans-serif;
+            color: black;
+            text-decoration: none;
+        }
+
+        .window {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            position: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 400px;
+            height: 300px;
+
+            border-radius: 20px;
+            background-color: #ffffff58;
+            backdrop-filter: blur(20px);
+            box-shadow: 0px 0px 150px rgba(0, 0, 0, 1);
+            z-index: 1;
+        }
+
+        .button {
+            display: flex;
+            color: black;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 20px;
+            width: 1020px;
+            height: 50px;
+            border: 0px solid;
+            font-family: 'Hanna', sans-serif;
+            margin-top: 15px;
+            margin: 0 auto;
+            margin-top: 15px;
+            border-radius: 10px;
+            background-color: #ffffff58;
+            backdrop-filter: blur(10px);
+            box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.3);
+            transition: box-shadow 0.3s ease, box-shadow 0.5s ease;
+        }
+
+        .button:hover {
+            box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.7);
+            background-color: #ffffff82;
+        }
+
+        .button:active {
+            box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.7);
+            background-color: #82828258;
+        }
+
+        .students {
+            display: flex;
+            height: 300px;
+            width: 1020px;
+            margin: 0 auto;
+            margin-top: 150px;
+            margin-bottom: 1000px;
+            flex-wrap: wrap;
+        }
+
+        .nameplate {
+            position: relative;
+            display: flex;
+            color: black;
+            font-size: 20px;
+            width: 80px;
+            height: 110px;
+            margin-top: 40px;
+            margin-left: 10px;
+            margin-right: 10px;
+            border: 0px solid;
+            font-family: 'Hanna', sans-serif;
+            border-radius: 10px;
+            background-color: #ffffff58;
+            backdrop-filter: blur(10px);
+            box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease, box-shadow 0.5s ease;
+        }
+
+        .nameplate:hover {
+            box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.7);
+            background-color: #ffffff82;
+        }
+
+        .nameplate:active {
+            box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.7);
+            background-color: #82828258;
+        }
+
+        .nameplate-checked {
+            background-color: #58ff5858;
+        }
+
+        .nameplate-profile {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: flex;
+            clip-path: polygon(0 0, 100% 0, 100% 80px, 0 80px);
+            border-radius: 10px;
+        }
+
+        .nameplate-name {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            object-fit: contain;
+            display: flex;
+            clip-path: circle(65%);
+        }
+
+        .main {
+            width: 800px;
+            margin: 0 auto;
+            margin-top: 60px;
+        }
+
+        img {
+            witdh: 45px;
+            height: 45px;
+        }
+
+        .box {
+            color: #CFCFCF;
+            font-family: 'Hanna', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            text-shadow: 0px 0px 50px rgba(0, 0, 0, 0.4);
+            ;
+        }
+
+        .box-item {
+            width: 500px;
+            height: 300px;
+            border-radius: 15px;
+            display: flex;
+            object-fit: cover;
+
+            border-radius: 10px;
+            background-color: #ffffff58;
+            backdrop-filter: blur(10px);
+            box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .box-space {
+            display: flex;
+        }
+
+        /* 요소의 초기 스타일 */
+        #fadeIO {
+            opacity: 1;
+        }
+    </style>
 </head>
 
 <body>
-  <div class="nav">
-    <img alt="HTML"
-      src="https://i.namu.wiki/i/r7HLJa7l3r1KrZKKvkyWJ6B_axrrAapFTInczZ_ypvFjluJgSIYJSyjbP2nMxh8gUalPdwi9vgNGhqSjRBVWtA.svg">
-    <a class="company-name" href="https://facegraphics.dolphin1840.repl.co">컴퓨터 그래픽스</a>
-    <div class="nav-right-items">
-      <a class="nav-item" href="https://facelist.dolphin1840.repl.co">명단 수정</a>
-      <div class="nav-item2">|</div>
-      <a class="nav-item" href="https://facecamera.dolphin1840.repl.co">카메라</a>
+    <!-- SheetJS CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.3/xlsx.full.min.js"></script>
+    <!-- FileSaver saveAs CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
+    <script src="./face-api.js"></script>
+    <script src="./face-api.min.js"></script>
+    <script src="./faceDetectionControls.js"></script>
+    <script>
+        //공통
+        // 참고 출처 : https://redstapler.co/sheetjs-tutorial-create-xlsx/
+        function s2ab(s) {
+            var buf = new ArrayBuffer(s.length); //convert s to arrayBuffer
+            var view = new Uint8Array(buf);  //create uint8array as viewer
+            for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF; //convert to octet
+            return buf;
+        }
+
+    </script>
+
+    <div class="loading" id="loading">
+        <div class="box" style="position: fixed; top: 40%;">로딩중</div>
+        <div class="box" id="loadingMsg" style="position: fixed; top: 50%; font-size: 0.2em;">Face-api 가중치 불러오는중...</div>
     </div>
-  </div>
-  <div class="main">
-    <div class="title">
-      Welcome!
+
+    <div class="nav">
+        <div class="box-space" style="width: 15px;"></div>
+        <img alt="HTML"
+            src="https://i.namu.wiki/i/r7HLJa7l3r1KrZKKvkyWJ6B_axrrAapFTInczZ_ypvFjluJgSIYJSyjbP2nMxh8gUalPdwi9vgNGhqSjRBVWtA.svg">
+        <a class="company-name" href="./">컴퓨터 그래픽스</a>
+        <div class="nav-right-items">
+            <a class="nav-item" href="#students">명단 수정</a>
+            <div class="nav-item2">|</div>
+            <a class="nav-item" href="#video">카메라</a>
+        </div>
     </div>
-  </div>
-  <script src="https://replit.com/public/js/replit-badge-v2.js" theme="dark" position="bottom-right"></script>
+    <div class="main">
+    </div>
+    <div class="box-space" style="height: 500px;"></div>
+    <div class="box" id="fadeIO" style="font-size: 7em;">여러분의 출석을 맡기세요.</div>
+    <div class="box" id="fadeIO" style="font-size: 2em;">Face-api로 간편하게 출석을 처리할 수 있습니다.</div>
+    <div class="box-space" style="height: 500px;"></div>
+    <div style=" margin: 0 auto; width: 1020px;">
+        <div class="box" id="fadeIO">
+            <video class="box-item" id="video"></video>
+            <div class="box-space" style="width: 20px;"></div>
+            <canvas class="box-item" id="canvas"></canvas>
+        </div>
+        <div id="fadeIO">
+            <button class="button" id="capture"> 출석 시작하기 </button>
+        </div>
+
+        <div class="window" id="window-student">
+            <div style="width: 100%; height: 100%;">
+                <img src="./students/강동원.jpg" id="window-student-img"
+                    style="width: 150px; height: auto; margin: 10px; border-radius: 13px;">
+                <il id="window-student-name"
+                    style="display: flex; position: absolute; top: 10%; left: 180px; font-size: 40px; font-family: 'Hanna', sans-serif;">
+                    강동원
+                </il>
+                <button class="button" id="window-student-state"
+                    style="position: absolute; top: 20%; left: 180px; width: 100px; height: 25px; border-radius: 5px; font-size: 20px; background-color: #85858585; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); color: white;">
+                    미출석
+                </button>
+                <div class="button"
+                    style="width: 100%;background-color: #FFFFFF00;backdrop-filter: blur(0px);position: absolute;bottom: 0%;box-shadow: 0px 0px 0px 0px #FFFFFF00;">
+                    <button class="button" id="window-student-remove"
+                        style="width: 50%;background-color: #FF000085;margin: 0;left: 0;position: absolute;border-radius: 0px 0px 0px 20px;">
+                        제거
+                    </button>
+                    <button class="button" id="window-student-save"
+                        style="width: 50%;margin: 0;right: 0;position: absolute;border-radius: 0px 0px 20px 0px;">
+                        닫기
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="fadeIO" style="margin-top: 120px;">
+            <button class="button" id="reset" style="position: absolute; width: 80px; height: 40px;">
+                초기화
+            </button>
+            <button class="button" id="downloadCsv"
+                style="position: absolute;width: 210px;height: 40px;margin-left: 90px;">
+                출석 기록 CSV 다운받기
+            </button>
+            <button class="button" id="downloadXlsx"
+                style="position: absolute;width: 220px;height: 40px;margin-left: 310px;">
+                출석 기록 XLSX 다운받기
+            </button>
+        </div>
+        <div class="students" id="students">
+        </div>
+        <div class="box-space" style="height: 500px;"></div>
+
+    </div>
+
+    </div>
+    <script>
+        const imgListUrl = '/students'; // 이미지 리스트 API 엔드포인트
+        const imgFolderUrl = '/students/'; // 이미지가 저장된 폴더 URL
+        const imgWidth = 300; // 이미지의 가로 크기
+        const imgHeight = 200; // 이미지의 세로 크기
+
+        let checkRoutine = -1;
+
+        let attendances = [];
+
+        let selectedStudent = null;
+        let selectedStudentName = "";
+        const studentWindow = document.getElementById('window-student');
+        const studentWindowName = document.getElementById('window-student-name');
+        const studentWindowImage = document.getElementById('window-student-img');
+        const studentWindowState = document.getElementById('window-student-state');
+        const studentWindowSaveButton = document.getElementById('window-student-save');
+        const studentWindowRemoveButton = document.getElementById('window-student-remove');
+
+        studentWindow.style.display = "none";
+        
+        const loading = document.getElementById('loading');
+        const loadingMsg = document.getElementById('loadingMsg');
+
+        loadingMsg.innerText = "명단 데이터 받아오는중...";
+
+        const imgListRequest = new XMLHttpRequest();
+        imgListRequest.open('GET', imgListUrl);
+        imgListRequest.onload = async function () {
+            const imgList = JSON.parse(imgListRequest.responseText);
+            const imgUrls = imgList.map((img) => imgFolderUrl + img.name + img.extension);
+
+            const imgRequests = imgUrls.map((imgUrl) => {
+                return new Promise((resolve, reject) => {
+                    const imgRequest = new XMLHttpRequest();
+                    imgRequest.open('GET', imgUrl);
+                    imgRequest.responseType = 'blob';
+                    imgRequest.onload = function () {
+                        if (imgRequest.status === 200) {
+                            resolve(imgRequest.response);
+                        } else {
+                            reject(Error(`Failed to load image ${imgUrl}`));
+                        }
+                    };
+                    imgRequest.onerror = function () {
+                        reject(Error(`Failed to load image ${imgUrl}`));
+                    };
+                    imgRequest.send();
+                });
+            });
+
+            const table = document.getElementById('students');
+            const nameplates = [];
+            const imgBlobs = await Promise.all(imgRequests);
+            const imgElements = imgBlobs.map((imgBlob, i) => createNamePlate(imgList[i].name, URL.createObjectURL(imgBlob)));
+
+            const nameplateAdder = document.createElement("button");
+            nameplateAdder.classList.add("nameplate");
+            nameplateAdder.setAttribute("id", "fadeIO");
+            nameplateAdder.addEventListener('click', () => {
+                // 가상으로 파일 선택 창 열기
+                fileInput.click();
+            });
+            nameplateAdder.innerText = '+';
+            nameplateAdder.style.justifyContent = "center";
+            nameplateAdder.style.alignItems = "center";
+            nameplateAdder.style.fontSize = "52px";
+            nameplateAdder.style.color = "white";
+            table.append(nameplateAdder);
+
+            const fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.accept = 'image/*'; // 이미지 파일만 선택 가능하도록 설정
+
+            fileInput.addEventListener('change', () => {
+                const file = fileInput.files[0];
+
+                if (file) {
+                    const reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.onload = (event) => {
+                        const imageData = event.target.result;
+                        const fileName = file.name.replace(/[^\w\.]/g, ''); // 공백이나 특수문자 제거
+                        const formData = new FormData();
+                        formData.append('file', file, fileName);
+
+                        fetch('/students', {
+                            method: 'POST',
+                            body: formData
+                        })
+                            .then(response => location.reload(true));
+                    };
+                }
+
+                // 파일 선택 창 닫기
+                fileInput.remove();
+            });
+
+            function createNamePlate(name, src) {
+                const img = document.createElement('img');
+                img.classList.add("nameplate-profile");
+                img.src = src
+                img.id = name;
+
+                const textlabel = document.createElement("div");
+                textlabel.classList.add("nameplate-name");
+                textlabel.innerText = name;
+
+                const nameplate = document.createElement("button");
+                nameplate.classList.add("nameplate", name);
+                nameplate.setAttribute("id", "fadeIO");
+                nameplate.addEventListener('click', () => {
+                    selectedStudent = nameplate;
+                    selectedStudentName = name;
+                    studentWindow.style.opacity = 0;
+                    studentWindow.style.display = "flex";
+                    studentWindowName.innerText = selectedStudentName;
+                    studentWindowImage.src = src;
+
+                    if (attendances.includes(name)) {
+                        studentWindowState.innerText = "출석";
+                        studentWindowState.style.backgroundColor = "#00850085";
+                    }
+                    else {
+                        studentWindowState.innerText = "미출석";
+                        studentWindowState.style.backgroundColor = "#85858585";
+                    }
+
+                    var opacity = 0.0;
+                    const routineIndex = setInterval(() => {
+                        console.log(opacity);
+                        opacity += 0.1;
+                        studentWindow.style.opacity = opacity;
+                    }, 10);
+
+                    setTimeout(() => {
+                        studentWindow.style.opacity = 1;
+                        clearInterval(routineIndex);
+                    }, 110);
+                });
+                nameplate.append(img);
+                nameplate.append(textlabel);
+
+                table.append(nameplate);
+                nameplates.push(nameplate);
+
+                return img;
+            }
+
+
+            const csvDownloader = document.getElementById('downloadCsv');
+
+            csvDownloader.addEventListener('click', () => {
+                const csv = GetCSV();
+                const now = new Date();
+                const year = now.getFullYear().toString().padStart(4, '0');
+                const month = (now.getMonth() + 1).toString().padStart(2, '0');
+                const day = now.getDate().toString().padStart(2, '0');
+                const hours = now.getHours().toString().padStart(2, '0');
+                const minutes = now.getMinutes().toString().padStart(2, '0');
+                const seconds = now.getSeconds().toString().padStart(2, '0');
+
+                const dateString = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+
+                downloadCsv(csv, `${dateString}.csv`);
+            });
+
+
+
+            const xlsxDownloader = document.getElementById('downloadXlsx');
+
+            xlsxDownloader.addEventListener('click', () => {
+                exportExcel();
+            });
+
+
+            var excelHandler = {
+                getExcelFileName: function () {
+                    return 'table-test.xlsx';
+                },
+                getSheetName: function () {
+                    return 'Table Test Sheet';
+                },
+                getExcelData: function () {
+                    // 테이블 요소 생성
+                    const table = document.createElement("table");
+
+                    const HeaderRow = table.insertRow();
+                    const header1 = HeaderRow.insertCell();
+                    const header2 = HeaderRow.insertCell();
+                    header1.textContent = "이름";
+                    header2.textContent = "상태";
+
+                    nameplates.forEach(nameplate => {
+                        // 테이블에 새로운 행(row) 추가
+                        const newRow = table.insertRow();
+                        // 새로운 셀(cell)을 행에 추가
+                        const cell1 = newRow.insertCell();
+                        const cell2 = newRow.insertCell();
+
+                        const student = nameplate.classList[1];
+                        // 각 셀에 텍스트 추가
+                        cell1.textContent = student;
+                        cell2.textContent = attendances.includes(student) ? '출석' : '미출석';
+                    });
+
+                    return table;
+                },
+                getWorksheet: function () {
+                    return XLSX.utils.table_to_sheet(this.getExcelData());
+                }
+            }
+
+            function exportExcel() {
+                // step 1. workbook 생성
+                var wb = XLSX.utils.book_new();
+
+                // step 2. 시트 만들기 
+                var newWorksheet = excelHandler.getWorksheet();
+
+                // step 3. workbook에 새로만든 워크시트에 이름을 주고 붙인다.  
+                XLSX.utils.book_append_sheet(wb, newWorksheet, excelHandler.getSheetName());
+
+                // step 4. 엑셀 파일 만들기 
+                var wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'binary' });
+
+                // step 5. 엑셀 파일 내보내기 
+                saveAs(new Blob([s2ab(wbout)], { type: "application/octet-stream" }), excelHandler.getExcelFileName());
+            }
+
+            function GetCSV() {
+                var csv = "";
+                nameplates.forEach(nameplate => {
+                    const student = nameplate.classList[1];
+                    const attendanceStatus = attendances.includes(student) ? '출석' : '미출석';
+                    csv += `${student}, ${attendanceStatus}\n`
+                });
+                return csv;
+            }
+
+            const resetter = document.getElementById('reset');
+            resetter.addEventListener('click', () => {
+                attendances = [];
+                const elements = document.querySelectorAll(".nameplate-checked");
+
+                // 모든 요소에서 클래스를 제거합니다.
+                elements.forEach(element => {
+                    element.classList.remove("nameplate-checked");
+                });
+            });
+
+            const video = document.getElementById('video');
+            const canvas = document.getElementById('canvas');
+            const captureButton = document.getElementById('capture');
+
+            loadingMsg.innerText = "Face-API 가중치 데이터 불러오는 중...";
+
+            async function run() {
+                // load face detection
+                await changeFaceDetector(SSD_MOBILENETV1)
+
+                // start processing image
+                updateResults()
+            }
+
+            const MODEL_URL = './models';
+            Promise.all([
+                faceapi.nets.ssdMobilenetv1.loadFromUri(MODEL_URL),
+                faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL),
+                faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL),
+                faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL),
+                faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL),
+                faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL),
+                faceapi.nets.faceExpressionNet.loadFromUri(MODEL_URL),
+            ]).then(startVideo);
+
+            function startVideo() {
+                loadingMsg.innerText = "웹캠 연결 시도중...";
+                const constraints = {
+                    video: {
+                        width: { ideal: 1280 },
+                        height: { ideal: 720 }
+                    }
+                };
+
+                navigator.mediaDevices.getUserMedia(constraints)
+                    .then((stream) => {
+                        video.srcObject = stream;
+                        video.play();
+                    })
+                    .catch(error => {
+                        console.error('Error accessing media devices.', error);
+                    });
+
+                const faceDetectPromises = imgElements.map((img) => {
+                    const detection = faceapi.detectSingleFace(img, new faceapi.SsdMobilenetv1Options()).withFaceLandmarks().withFaceDescriptor();
+                    return detection;
+                });
+                Promise.all(faceDetectPromises).then((detections) => {
+
+                    loadingMsg.innerText = "완료";
+
+                    setTimeout(() => {
+                        var opacity = 0.0;
+                        const loadingRoutineIndex = setInterval(() => {
+                            opacity += 0.1;
+                            loading.style.opacity = 1 - opacity;
+                        }, 10);
+
+                        setTimeout(() => {
+                            clearInterval(loadingRoutineIndex);
+                            loading.style.display = "none";
+                        }, 110);
+                    }, 500);
+
+
+                    // detections 배열에는 모든 이미지의 얼굴 검출 결과가 저장됩니다.
+                    // 검출되지 않은 이미지는 null로 표시됩니다.
+                    detections = detections.filter((item) => item !== undefined);
+
+                    const descriptors = detections.map((detection, i) => {
+                        console.log(imgElements[i].id);
+                        console.log(imgElements[i].src);
+                        return new faceapi.LabeledFaceDescriptors(
+                            imgElements[i].id,
+                            [detection.descriptor]
+                        );
+                    });
+                    console.log(descriptors);
+
+                    const faceMatcher = new faceapi.FaceMatcher(descriptors, 0.9); // 디스크립터 배열과 일치율 임계값을 입력하여 faceMatcher 객체 생성
+
+                    captureButton.addEventListener('click', () => {
+                        const context = canvas.getContext('2d');
+                        canvas.width = video.videoWidth;
+                        canvas.height = video.videoHeight;
+
+                        const dataURL = canvas.toDataURL('image/png');
+                        if (!isFaceDetectionModelLoaded()) {
+                            console.log("Face Detection Model not Loaded");
+                            return;
+                        }
+
+                        if (checkRoutine !== -1) {
+                            clearInterval(checkRoutine);
+                            captureButton.style.backgroundColor = "#ffffff58";
+                            captureButton.innerText = " 출석 시작하기 ";
+                            checkRoutine = -1;
+                            context.clearRect(0, 0, canvas.width, canvas.height);
+                            return;
+                        }
+
+                        //캔버스에 웹캠 비디오 렌더링
+                        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+                        captureButton.style.backgroundColor = "#ff585858";
+                        captureButton.innerText = " 출석 종료하기 ";
+
+                        checkRoutine = setInterval(async () => {
+                            const options = getFaceDetectorOptions()
+                            const detections = await faceapi.detectAllFaces(canvas, options).withFaceLandmarks().withFaceDescriptors();
+
+                            detections.forEach((face) => {
+                                const box = face.detection.box;
+                                context.strokeStyle = "#BBBB00";
+                                context.lineWidth = 4;
+                                context.strokeRect(box.x, box.y, box.width, box.height);
+                            });
+
+                            const matches = detections.map((face) => {
+                                const queryDescriptor = face.descriptor; // 웹캠으로 찾은 얼굴의 디스크립터 가져오기
+                                const bestMatch = faceMatcher.findBestMatch(queryDescriptor); // faceMatcher 객체를 사용하여 최적 일치 결과 가져오기
+
+                                console.log(bestMatch);
+                                if (bestMatch.label === selectedStudentName) {
+                                    studentWindowState.innerText = "출석";
+                                    studentWindowState.style.backgroundColor = "#00850085";
+                                }
+
+                                if (bestMatch.distance < 0.6) { // 일치 임계값보다 작은 경우
+                                    nameplates.forEach((nameplate) => {
+                                        if (nameplate.classList[1] === bestMatch.label) {
+                                            nameplate.classList.add("nameplate-checked");
+                                        }
+                                    });
+
+                                    if (!attendances.includes(bestMatch.label)) {
+                                        attendances.push(bestMatch.label);
+                                    }
+                                    return {
+                                        name: bestMatch.label, // 일치하는 사람의 이름
+                                        detection: face.detection // 얼굴 검출 결과
+                                    };
+                                } else {
+                                    return null; // 일치하는 사람이 없는 경우 null 반환
+                                }
+                            });
+                        }, 300);
+                    });
+                });
+            }
+
+            function downloadCsv(csv, filename) {
+                const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+
+                if (navigator.msSaveBlob) { // IE 10+
+                    navigator.msSaveBlob(blob, filename);
+                } else {
+                    const link = document.createElement('a');
+                    if (link.download !== undefined) { // feature detection
+                        // download 속성을 지원하는 브라우저의 경우 링크를 생성해서 클릭
+                        const url = URL.createObjectURL(blob);
+                        link.setAttribute('href', url);
+                        link.setAttribute('download', filename);
+                        link.style.visibility = 'hidden';
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    } else {
+                        // download 속성을 지원하지 않는 브라우저의 경우 새 창에서 csv 데이터를 보여줌
+                        const csvWindow = window.open('', 'csv', 'height=400,width=600');
+                        csvWindow.document.write('<pre>' + csv + '</pre>');
+                    }
+                }
+            }
+        };
+        imgListRequest.send();
+
+
+        studentWindowState.addEventListener('click', () => {
+
+            if (attendances.includes(selectedStudentName)) {
+                const index = attendances.indexOf(selectedStudentName);
+                attendances.splice(index, 1);
+                selectedStudent.classList.remove("nameplate-checked");
+                studentWindowState.innerText = "미출석";
+                studentWindowState.style.backgroundColor = "#85858585";
+            }
+            else {
+                attendances.push(selectedStudentName);
+                selectedStudent.classList.add("nameplate-checked");
+                studentWindowState.innerText = "출석";
+                studentWindowState.style.backgroundColor = "#00850085";
+            }
+
+        });
+
+        studentWindowSaveButton.addEventListener('click', () => {
+
+            var opacity = 0.0;
+            const routineIndex = setInterval(() => {
+                opacity += 0.1;
+                studentWindow.style.opacity = 1 - opacity;
+            }, 10);
+
+            setTimeout(() => {
+                clearInterval(routineIndex);
+                studentWindow.style.display = "none";
+            }, 110);
+
+
+        });
+
+        studentWindowRemoveButton.addEventListener('click', () => {
+
+            var opacity = 0.0;
+            const routineIndex = setInterval(() => {
+                opacity += 0.1;
+                studentWindow.style.opacity = 1 - opacity;
+            }, 10);
+
+            setTimeout(() => {
+                clearInterval(routineIndex);
+                studentWindow.style.display = "none";
+            }, 110);
+
+            const xhr = new XMLHttpRequest();
+            const url = `/students/${selectedStudentName}`; // 삭제할 파일 이름을 포함한 URL
+
+            selectedStudent.remove();
+
+            xhr.open('DELETE', url);
+            xhr.send();
+        });
+
+    </script>
+
+
+    <script>
+
+        setTimeout(() => {
+            const elements = document.querySelectorAll("#fadeIO");
+
+            // 스크롤 이벤트를 등록합니다.
+            window.addEventListener("scroll", () => {
+                elements.forEach((element) => {
+                    const rect = element.getBoundingClientRect();
+                    const centerY = rect.top + rect.height / 2;
+                    const radiusY = rect.height;
+
+                    const opacity = centerY / (window.innerHeight * 0.3);
+                    element.style.opacity = opacity;
+                });
+            });
+        }, 300);
+    </script>
 </body>
 
 </html>
