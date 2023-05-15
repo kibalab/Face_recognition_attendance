@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
-const multer  = require('multer');
+const multer = require('multer');
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -79,36 +79,36 @@ app.post('/students', upload.single('file'));
 
 app.delete('/students/:name', (req, res) => {
     const fileName = req.params.name;
-  
+
     // 파일 제거
     const filesPath = path.join(__dirname, 'students');
     fs.readdir(filesPath, (err, files) => {
-      if (err) {
-        console.error(err);
-        res.status(500).send('Internal server error');
-        return;
-      }
-  
-      const matchingFiles = files.filter(file => {
-        return path.basename(file, path.extname(file)) === fileName;
-      });
-  
-      matchingFiles.forEach(file => {
-        fs.unlink(path.join(filesPath, file), err => {
-          if (err) {
+        if (err) {
             console.error(err);
             res.status(500).send('Internal server error');
             return;
-          }
-  
-          console.log(`File ${file} removed`);
-        });
-      });
-  
-      res.status(204).send();
-    });
-  });
+        }
 
-app.listen(3000, () => {
-    console.log('Server started on port 3000');
+        const matchingFiles = files.filter(file => {
+            return path.basename(file, path.extname(file)) === fileName;
+        });
+
+        matchingFiles.forEach(file => {
+            fs.unlink(path.join(filesPath, file), err => {
+                if (err) {
+                    console.error(err);
+                    res.status(500).send('Internal server error');
+                    return;
+                }
+
+                console.log(`File ${file} removed`);
+            });
+        });
+
+        res.status(204).send();
+    });
+});
+
+app.listen(80, () => {
+    console.log('Server started on port 80');
 });
