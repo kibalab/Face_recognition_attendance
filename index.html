@@ -432,9 +432,11 @@
                     reader.readAsDataURL(file);
                     reader.onload = (event) => {
                         const imageData = event.target.result;
-                        const fileName = file.name.replace(/[^\w\.]/g, ''); // 공백이나 특수문자 제거
+                        const fileName = file.name; // 공백이나 특수문자 제거
                         const formData = new FormData();
                         formData.append('file', file, fileName);
+
+                        console.log(fileName);
 
                         fetch('/students', {
                             method: 'POST',

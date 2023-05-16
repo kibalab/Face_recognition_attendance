@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
 const multer = require('multer');
+const iconv = require('iconv-lite');
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -74,7 +75,22 @@ app.get('/students', (req, res) => {
     });
 });
 
-const upload = multer({ dest: 'students/' });
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'students/');
+    },
+    filename: function (req, file, cb) {
+        console.log(`Save File ${file.originalname}`);
+        const filename = Buffer.from(file.originalname, 'binary');
+        const originalname = iconv.decode(filename, 'UTF-8');
+        console.log(`Decode File ${originalname}`);
+        const extension = path.extname(originalname);
+        const basename = path.basename(originalname, extension);
+        cb(null, basename + extension);
+    }
+});
+
+const upload = multer({ storage: storage });
 app.post('/students', upload.single('file'));
 
 app.delete('/students/:name', (req, res) => {
